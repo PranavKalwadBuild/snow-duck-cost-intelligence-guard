@@ -1,0 +1,25 @@
+            else:  # snowflake
+                logger.info(f"Executing {model_name} in Snowflake warehouse {warehouse_size}")
+                # Execute via MCP server's SnowflakeConnection
+                # Temporarily set warehouse environment variable for this connection
+                original_warehouse = os.environ.get('SNOWFLAKE_WAREHOUSE')
+                os.environ['SNOWFLAKE_WAREHOUSE'] = warehouse_size
+
+                snowflake_conn = SnowflakeConnection()
+                try:
+                    # Execute the model SQL using the specified warehouse
+                    snowflake_conn.process_request(sql)
+                    # If we get here without exception, the query succeeded
+                    logger.info(f"Successfully executed {model_name} in Snowflake warehouse {warehouse_size}")
+                    return True
+                except Exception as e:
+                    logger.error(f"Failed to execute {model_name} in Snowflake: {e}")
+                    return False
+                finally:
+                    snowflake_conn.cleanup()
+                    # Restore original warehouse environment variable
+                    if original_warehouse is None:
+                        if 'SNOWFLAKE_WAREHOUSE' in os.environ:
+                            del os.environ['SNOWFLAKE_WAREHOUSE']
+                    else:
+                        os.environ['SNOWFLAKE_WAREHOUSE'] = original_warehouse

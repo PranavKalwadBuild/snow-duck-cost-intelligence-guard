@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "snowflake": {
+      "command": "python3",
+      "args": [
+        "/Users/pranavkalwad/.claude/mcp/snowflake-mcp-server/snowflake_mcp/main.py"
+      ],
+      "env": {
+        "SNOWFLAKE_ACCOUNT": "PWIOXDK-VQB53460",
+        "SNOWFLAKE_USER": "PRANAVDUCKDB",
+        "SNOWFLAKE_ROLE": "ACCOUNTADMIN",
+        "SNOWFLAKE_DATABASE": "SNOWFLAKE_SAMPLE_DATA",
+        "SNOWFLAKE_PASSWORD": "PranavKalwad@1008"
+      }
+    }
+  }
+}

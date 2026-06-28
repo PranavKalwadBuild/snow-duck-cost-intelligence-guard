@@ -1,0 +1,33 @@
+connection:
+  account: ''
+  authenticator: ''
+  database: ''
+  password: ''
+  role: ''
+  schema: ''
+  user: ''
+  warehouse: ''
+cost:
+  duckdb_cost_per_second: 1.0e-06
+duckdb:
+  max_runtime_seconds: 300
+  memory_fraction: 0.7
+snowflake:
+  pricing_per_second:
+    LARGE: 0.004
+    MEDIUM: 0.002
+    SMALL: 0.001
+    XLARGE: 0.008
+    XSMALL: 0.0005
+    XXLARGE: 0.016
+    XXXLARGE: 0.032
+  warehouse:
+    default_size: MEDIUM
+    mapping:
+      LARGE: LOAD_TEST_WH_L
+      MEDIUM: LOAD_TEST_WH_M
+      SMALL: LOAD_TEST_WH_S
+      XLARGE: LOAD_TEST_WH_XL
+      XSMALL: COMPUTE_WH
+      XXLARGE: LOAD_TEST_WH_2XL
+      XXXLARGE: LOAD_TEST_WH_4XL
